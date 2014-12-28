@@ -12,7 +12,7 @@ if [ -f package.json ]; then
     json -e "this.version=\"$1\"" < package.json > package.tmp.json
     mv package.tmp.json package.json
     git commit package.json -m "Bump to version $1"
-    echo "Here's what I did to our package.json:"
+    echo "Here's what I did to your package.json:"
     git --no-pager show
   fi
 fi
