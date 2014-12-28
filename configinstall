@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+pluginpath="$(dirname "$(readlink -f $0)")"
+mkdir -p "$HOME/bin"
+ln -svf "$pluginpath/bin/bump" "$HOME/bin/bump"

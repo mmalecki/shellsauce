@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+version="$1"
+if [ -f package.json ]; then
+  echo "package.json found"
+  if [ $(git diff package.json | wc -l) -ne 0 ]; then
+    echo "Refusing to proceed - uncommitted changes to package.json found"
+    exit 1
+  fi
+
+  if [ $(json version < package.json) -ne "$version" ]; then
+    echo "Bumping package.json version"
+    json -e "this.version=\"$1\"" < package.json > package.tmp.json
+    mv package.tmp.json package.json
+    git commit package.json -m "Bump to version $1"
+    echo "Here's what I did to our package.json:"
+    git --no-pager show
+  fi
+fi
+
+git tag -s -a -m "Version $1" "$1"
