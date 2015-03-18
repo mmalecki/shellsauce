@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 version="$1"
+
+if [ -z "$version" ]; then
+  echo "usage: bump <version>"
+  exit 2
+fi
+
 if [ -f package.json ]; then
   echo "package.json found"
   if [ $(git diff package.json | wc -l) -ne 0 ]; then
@@ -7,7 +13,7 @@ if [ -f package.json ]; then
     exit 1
   fi
 
-  if [ $(json version < package.json) -ne "$version" ]; then
+  if [ "$(json version < package.json)" != "$version" ]; then
     echo "Bumping package.json version"
     json -e "this.version=\"$1\"" < package.json > package.tmp.json
     mv package.tmp.json package.json
@@ -17,4 +23,4 @@ if [ -f package.json ]; then
   fi
 fi
 
-git tag -s -a -m "Version $1" "$1"
+git tag -s -a -m "Version $1" "v$1"
