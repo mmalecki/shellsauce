@@ -24,3 +24,8 @@ if [ -f package.json ]; then
 fi
 
 git tag -s -a -m "Version $1" "v$1"
+
+if [ $? -ne 0 ] && [ -f package.json ]; then
+  echo "Tagging failed, reverting changes I made to package.json"
+  git reset --hard HEAD^
+fi
