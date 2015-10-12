@@ -2,3 +2,4 @@
 pluginpath="$(dirname "$(readlink -f $0)")"
 mkdir -p "$HOME/bin"
 ln -svf "$pluginpath/bin/bump" "$HOME/bin/bump"
+ln -svf "$pluginpath/bin/pj" "$HOME/bin/pj"
