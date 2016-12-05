@@ -8,7 +8,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/npm/bin:$PATH"
 
 eval $(keychain --eval -q id_rsa)
 
