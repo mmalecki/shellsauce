@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+in="$1"
+
+if [[ $in == "*.pem" ]]; then
+  openssl x509 -inform pem -noout -text -in "$in"
+else
+  echo | openssl s_client -connect "$in" -showcerts | openssl x509 -inform pem -noout -text
+fi
