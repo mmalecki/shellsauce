@@ -8,5 +8,8 @@ inform () {
 if [[ "$in" == *".pem" ]]; then
   cat "$in" | inform
 else
+  if ! [[ $in =~ :[0-9]+$ ]]; then
+    in="$in:443"
+  fi
   echo | openssl s_client -connect "$in" -showcerts | inform
 fi
