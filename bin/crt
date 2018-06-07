@@ -2,14 +2,16 @@
 in="$1"
 
 inform () {
-  openssl x509 -inform pem -noout -text
+  openssl x509 -noout -text -fingerprint $@
 }
 
 if [[ "$in" == *".pem" ]]; then
-  cat "$in" | inform
+  inform -inform pem < "$in"
+elif [[ "$in" == *".crt" ]]; then
+  inform < "$in"
 else
   if ! [[ $in =~ :[0-9]+$ ]]; then
     in="$in:443"
   fi
-  echo | openssl s_client -connect "$in" -showcerts | inform
+  echo | openssl s_client -servername $(echo $in | cut -d: -f1) -connect "$in" -showcerts | inform -inform pem
 fi
