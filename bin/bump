@@ -30,10 +30,12 @@ fi
 if [ -f Cargo.toml ]; then
   echo "Cargo.toml found"
   check_diff Cargo.toml
+  check_diff Cargo.lock
   sed -Ee "s/version(\s*)=(\s*)\"(.*)\"/version\1=\2\"$version\"/" -i Cargo.toml
-  git add Cargo.toml
-  echo "Here's what I did to your Cargo.toml:"
-  git --no-pager diff --cached Cargo.toml
+  cargo build
+  git add Cargo.toml Cargo.lock
+  echo "Here's what I did to your Cargo.toml and Cargo.lock:"
+  git --no-pager diff --cached Cargo.toml Cargo.lock
 fi
 
 git commit -m "Bump to version $1"
