@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 pluginpath="$(dirname "$(readlink -f $0)")"
 
-git clone https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 
 mkdir -p "$HOME/bin"
 ln -svf "$pluginpath/bin/bump" "$HOME/bin/bump"
