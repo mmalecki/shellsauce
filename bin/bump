@@ -16,14 +16,20 @@ fi
 if [ -f package.json ]; then
   echo "package.json found"
   check_diff package.json
+  check_diff package-lock.json
 
   if [ "$(json version < package.json)" != "$version" ]; then
     echo "Bumping package.json version"
+
     json -e "this.version=\"$1\"" < package.json > package.tmp.json
     mv package.tmp.json package.json
-    echo "Here's what I did to your package.json:"
-    git add package.json
-    git --no-pager diff --cached package.json
+
+    json -e "this.version=\"$1\"" < package-lock.json > package-lock.tmp.json
+    mv package-lock.tmp.json package-lock.json
+
+    echo "Here's what I did to your package.json and package-lock.json:"
+    git add package.json package-lock.json
+    git --no-pager diff --cached package.json package-lock.json
   fi
 fi
 
