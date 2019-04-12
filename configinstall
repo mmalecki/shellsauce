@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-pluginpath="$(dirname "$(readlink -f $0)")"
+READLINK=readlink
+which greadlink && READLINK=greadlink
+
+pluginpath="$(dirname "$($READLINK -f $0)")"
 
 git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 
