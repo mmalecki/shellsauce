@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+kubectl get pods -n "$1" | grep "$2" | awk '{ print $1 }' |  xargs -I'{}' kubectl delete pod -n "$1" '{}'
