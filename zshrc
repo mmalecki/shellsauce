@@ -4,7 +4,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
-plugins=(git kubectl)
+plugins=(git kubectl docker)
 source $ZSH/oh-my-zsh.sh
 
 alias kubeval='kubeval --strict'
