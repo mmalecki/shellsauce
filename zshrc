@@ -16,8 +16,8 @@ export EDITOR='vim'
 export GOPATH="$HOME/dev/go"
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$PATH"
 
-which keychain && eval $(keychain --eval -q id_rsa)
+which keychain > /dev/null && eval $(keychain --eval -q id_rsa)
 
-source ~/.secretsrc
+[ -f ~/.secretsrc ] && source ~/.secretsrc
 
 alias sourceenvrc='set -a; . ./.envrc; set +a'
