@@ -16,7 +16,7 @@ export EDITOR='vim'
 export GOPATH="$HOME/dev/go"
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$PATH"
 
-eval $(keychain --eval -q id_rsa)
+which keychain && eval $(keychain --eval -q id_rsa)
 
 source ~/.secretsrc
 
