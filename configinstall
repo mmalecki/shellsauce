@@ -11,4 +11,6 @@ ln -svf "$pluginpath/bin/bump" "$HOME/bin/bump"
 ln -svf "$pluginpath/bin/pj" "$HOME/bin/pj"
 ln -svf "$pluginpath/bin/crt" "$HOME/bin/crt"
 ln -svf "$pluginpath/bin/kubekill" "$HOME/bin/kubekill"
+ln -svf "$pluginpath/bin/cf" "$HOME/bin/cf"
 ln -svf "$pluginpath/zshrc" "$HOME/.zshrc"
+
