@@ -23,12 +23,15 @@ if [ -f package.json ]; then
 
     json -e "this.version=\"$1\"" < package.json > package.tmp.json
     mv package.tmp.json package.json
+    git add package.json
 
-    json -e "this.version=\"$1\"" < package-lock.json > package-lock.tmp.json
-    mv package-lock.tmp.json package-lock.json
+    if [[ -f "package-lock.json" ]]; then
+      json -e "this.version=\"$1\"" < package-lock.json > package-lock.tmp.json
+      mv package-lock.tmp.json package-lock.json
+      git add package-lock.json
+    fi
 
     echo "Here's what I did to your package.json and package-lock.json:"
-    git add package.json package-lock.json
     git --no-pager diff --cached package.json package-lock.json
   fi
 fi
