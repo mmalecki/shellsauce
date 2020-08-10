@@ -19,7 +19,7 @@ alias vim='nvim'
 export EDITOR='nvim'
 
 export GOPATH="$HOME/dev/go"
-export PATH="$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$PATH"
+export PATH="$HOME/.tfenv/bin:$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$HOME/.tgenv/bin:$HOME/.cargo/bin:$HOME/.istioctl/bin:$PATH"
 
 which keychain > /dev/null && eval $(keychain --eval -q id_rsa)
 
