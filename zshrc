@@ -8,7 +8,7 @@ plugins=(git kubectl docker gcloud aws history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
 bindkey "^P" history-substring-search-up
-bindkey "^N" history-substring-search-up
+bindkey "^N" history-substring-search-down
 
 alias kubeval='kubeval --strict'
 alias datesf='TZ="America/Los_Angeles" date'
