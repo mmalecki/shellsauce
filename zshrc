@@ -4,7 +4,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
-plugins=(git kubectl docker history-substring-search)
+plugins=(git kubectl docker gcloud aws history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
 bindkey "^P" history-substring-search-up
