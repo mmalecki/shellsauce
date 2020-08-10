@@ -14,8 +14,9 @@ alias kubeval='kubeval --strict'
 alias datesf='TZ="America/Los_Angeles" date'
 alias tg='terragrunt'
 alias tf='terraform'
+alias vim='nvim'
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 export GOPATH="$HOME/dev/go"
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$PATH"
