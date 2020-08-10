@@ -24,3 +24,4 @@ which keychain > /dev/null && eval $(keychain --eval -q id_rsa)
 [ -f ~/.secretsrc ] && source ~/.secretsrc
 
 alias sourceenvrc='set -a; . ./.envrc; set +a'
+alias sourceenv='set -a; . ./.env; set +a'
