@@ -15,6 +15,7 @@ alias datesf='TZ="America/Los_Angeles" date'
 alias tg='terragrunt'
 alias tf='terraform'
 alias vim='nvim'
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 export EDITOR='nvim'
 
