@@ -17,6 +17,9 @@ alias tf='terraform'
 alias vim='nvim'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
+# Courtesy of https://stackoverflow.com/a/58117444.
+alias kgsv='kubectl get secret -o go-template="{{range \$k, \$v := .data}}{{printf \"%s: \" \$k}}{{if not \$v}}{{\$v}}{{else}}{{\$v | base64decode}}{{end}}{{\"\n\"}}{{end}}"'
+
 export EDITOR='nvim'
 
 export GOPATH="$HOME/dev/go"
