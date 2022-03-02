@@ -23,7 +23,7 @@ alias kgsv='kubectl get secret -o go-template="{{range \$k, \$v := .data}}{{prin
 export EDITOR='nvim'
 
 export GOPATH="$HOME/dev/go"
-export PATH="$HOME/.tfenv/bin:$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$HOME/.tgenv/bin:$HOME/.cargo/bin:$HOME/.istioctl/bin:$PATH"
+export PATH="$HOME/.tfenv/bin:$GOPATH/bin:$HOME/bin:$HOME/npm/bin:$HOME/.tgenv/bin:$HOME/.pkenv/bin:$HOME/.cargo/bin:$HOME/.istioctl/bin:$PATH"
 
 if which keychain > /dev/null; then
   [ -f .ssh/id_rsa ] && eval $(keychain --eval -q id_rsa)
