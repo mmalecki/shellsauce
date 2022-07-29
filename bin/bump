@@ -15,6 +15,9 @@ fi
 
 if [ -f package.json ]; then
   echo "package.json found"
+
+  files="package.json"
+
   check_diff package.json
   check_diff package-lock.json
 
@@ -26,13 +29,14 @@ if [ -f package.json ]; then
     git add package.json
 
     if [[ -f "package-lock.json" ]]; then
+      files="$files package-lock.json"
       json -e "this.version=\"$1\"" < package-lock.json > package-lock.tmp.json
       mv package-lock.tmp.json package-lock.json
       git add package-lock.json
     fi
 
     echo "Here's what I did to your package.json and package-lock.json:"
-    git --no-pager diff --cached package.json package-lock.json
+    git --no-pager diff --cached $files
   fi
 fi
 
@@ -47,7 +51,7 @@ if [ -f Cargo.toml ]; then
   git --no-pager diff --cached Cargo.toml Cargo.lock
 fi
 
-git commit -m "Bump to version $1"
+git commit -m "Bump to version $1" -a
 
 git tag -a -m "Version $1" "v$1"
 
