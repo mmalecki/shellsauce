@@ -8,6 +8,8 @@ check_diff() {
   fi
 }
 
+commit=false
+
 if [ -z "$version" ]; then
   echo "usage: bump <version>"
   exit 2
@@ -37,6 +39,8 @@ if [ -f package.json ]; then
 
     echo "Here's what I did to your package.json and package-lock.json:"
     git --no-pager diff --cached $files
+
+    commit=true
   fi
 fi
 
@@ -49,13 +53,16 @@ if [ -f Cargo.toml ]; then
   git add Cargo.toml Cargo.lock
   echo "Here's what I did to your Cargo.toml and Cargo.lock:"
   git --no-pager diff --cached Cargo.toml Cargo.lock
+  commit=true
 fi
 
-git commit -m "Bump to version $1" -a
+if $commit; then
+  git commit -m "Bump to version $1" -a
+fi
 
 git tag -a -m "Version $1" "v$1"
 
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] && $commit; then
   echo "Tagging failed, reverting changes I made"
   git reset --hard HEAD^
 fi
