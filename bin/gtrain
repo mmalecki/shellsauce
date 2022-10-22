@@ -2,5 +2,5 @@
 set -e
 root=$(git rev-parse --show-toplevel)
 base=$(basename "$root")
-git branch "$1"
+git branch "$1" || true
 git worktree add "$root/../$base-$1" "$1"
