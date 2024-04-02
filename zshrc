@@ -11,6 +11,7 @@ bindkey "^P" history-substring-search-up
 bindkey "^N" history-substring-search-down
 
 alias kubeval='kubeval --strict'
+alias dateber='TZ="Europe/Berlin" date'
 alias datesf='TZ="America/Los_Angeles" date'
 alias tg='terragrunt'
 alias tf='terraform'
