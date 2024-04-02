@@ -15,3 +15,4 @@ ln -svf "$pluginpath/bin/cf" "$HOME/bin/cf"
 ln -svf "$pluginpath/bin/gtrain" "$HOME/bin/gtrain"
 ln -svf "$pluginpath/zshrc" "$HOME/.zshrc"
 
+sudo chsh -s /bin/zsh $USER
