@@ -13,6 +13,7 @@ ln -svf "$pluginpath/bin/crt" "$HOME/bin/crt"
 ln -svf "$pluginpath/bin/kubekill" "$HOME/bin/kubekill"
 ln -svf "$pluginpath/bin/cf" "$HOME/bin/cf"
 ln -svf "$pluginpath/bin/gtrain" "$HOME/bin/gtrain"
+ln -svf "$pluginpath/bin/last-download" "$HOME/bin/last-download"
 ln -svf "$pluginpath/zshrc" "$HOME/.zshrc"
 
 sudo chsh -s /bin/zsh $USER
