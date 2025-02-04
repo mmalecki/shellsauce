@@ -56,6 +56,15 @@ if [ -f Cargo.toml ]; then
   commit=true
 fi
 
+if [ -f pyproject.toml ]; then
+  echo "pyproject.toml found"
+  check_diff pyproject.toml
+  poetry version "$version"
+  echo "Here's what I did to your pyproject.toml:"
+  git --no-pager diff --cached pyproject.toml
+  commit=true
+fi
+
 if $commit; then
   git commit -m "Bump to version $1" -a
 fi
