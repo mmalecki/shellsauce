@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+on_exit () {
+  kill "$ocp_pid"
+  exit
+}
+
+port=$(shuf -i "3940-65535" -n 1)
+py="${PYTHON:-python3}"
+
+if ! [ -z "$OCP_VENV" ]; then
+  . "$OCP_VENV/bin/activate"
+fi
+
+"$py" -m ocp_vscode --port "$port" &
+ocp_pid=$!
+trap on_exit SIGINT SIGTERM
+
+while ! nc -vz 127.0.0.1 $port > /dev/null 2>&1 ; do
+  sleep 0.1
+done
+
+xdg-open "http://127.0.0.1:$port/viewer"
+
+OCP_PORT="$port" watchexec -e py -- "$py" "$@"
