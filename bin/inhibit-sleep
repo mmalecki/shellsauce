@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec systemd-inhibit --what=sleep:handle-lid-switch --who="maciej" --why="Requested by user" "$@"
