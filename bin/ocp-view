@@ -7,11 +7,11 @@ on_exit () {
 port=$(shuf -i "3940-65535" -n 1)
 py="${PYTHON:-python3}"
 
-if ! [ -z "$OCP_VENV" ]; then
+if ! [ -z "$OCP_VENV" ] && [ -z "$VIRTUAL_ENV" ]; then
   . "$OCP_VENV/bin/activate"
 fi
 
-"$py" -m ocp_vscode --port "$port" &
+"$py" -m ocp_viewer --port "$port" &
 ocp_pid=$!
 trap on_exit SIGINT SIGTERM
 
